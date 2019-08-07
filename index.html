@@ -30,12 +30,15 @@
     <script>
         $(function(){
             $("#save-button").click(function(){
-                var temp = $("#capture").clone();
+                var temp = $("#capture");
                 temp.find("input").remove();
                 temp.find("label.active").css("background-color", "#ff0000");
-                html2canvas(temp).then(canvas => {
-                    document.body.appendChild(canvas)
-               });
+                
+                html2canvas(temp, { onrendered: function(canvas) {
+					document.body.appendChild(canvas)
+				}});
+                
+                $("#capture").remove();
             });
         });
     </script>
@@ -541,7 +544,7 @@
     </div>
     </div>
     <div>
-        <button id="save-button" class="btn btn-primary form-control">↓↓画像化↓↓</button>
+        <button id="save-button" class="btn btn-primary form-control">画像化</button>
     </div>
 </body>
 </html>
