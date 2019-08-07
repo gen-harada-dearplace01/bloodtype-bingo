@@ -33,7 +33,7 @@
                 var temp = $("#capture").clone();
                 temp.find("input").remove();
                 temp.find("label.active").css("background-color", "#ff0000");
-                html2canvas(temp.then(canvas => {
+                html2canvas(temp).then(canvas => {
                     document.body.appendChild(canvas)
                });
             });
