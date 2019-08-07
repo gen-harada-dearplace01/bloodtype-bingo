@@ -35,7 +35,8 @@
                 temp.find("label.active").css("background-color", "#ff0000");
                 
 		html2canvas(document.querySelector("#capture")).then(canvas => {
-		    document.body.appendChild(canvas)
+		    var imgData = canvas.toDataURL();
+		    $('#result')[0].src = imgData;
 		    $("#capture").remove();
 		});
                 
@@ -44,6 +45,7 @@
     </script>
 </head>
 <body>
+    <div><img id="result"></img></div>
     <div id="capture">
     <div class="row">
         <div class="col-xs-12">
@@ -544,7 +546,7 @@
     </div>
     </div>
     <div>
-        <button id="save-button" class="btn btn-primary form-control">画像化</button>
+        <button id="save-button" class="btn btn-primary form-control" style="height:40px;">画像化</button>
     </div>
 </body>
 </html>
