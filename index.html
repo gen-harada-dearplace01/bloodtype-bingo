@@ -34,11 +34,11 @@
                 temp.find("input").remove();
                 temp.find("label.active").css("background-color", "#ff0000");
                 
-                html2canvas(temp, { onrendered: function(canvas) {
-					document.body.appendChild(canvas)
-				}});
+		html2canvas(document.querySelector("#capture")).then(canvas => {
+		    document.body.appendChild(canvas)
+		    $("#capture").remove();
+		});
                 
-                $("#capture").remove();
             });
         });
     </script>
