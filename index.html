@@ -9,7 +9,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         label.active{
             background-color:#ff0000!important;
@@ -26,8 +26,19 @@
         }
 
     </style>
+    
+    <script>
+        $(function(){
+            $("#save-button").click(function(){
+                html2canvas(document.querySelector("#capture")).then(canvas => {
+                    document.body.appendChild(canvas)
+                });
+            });
+        });
+    </script>
 </head>
 <body>
+    <div id="capture">
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-warning">
@@ -524,6 +535,10 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" id="save-button">保存</button>
     </div>
 </body>
 </html>
