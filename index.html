@@ -11,542 +11,544 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
-        label.active{
-            background-color:#ff0000!important;
-            color:#ffffff!important;
+
+        label.active {
+            background-color: #ff0000 !important;
+            color: #ffffff !important;
         }
 
-        .btn-group label span{
-            height:100px;
-            width:100px;
-            display:table-cell;
-            vertical-align:middle;
-            text-align:center;
-            white-space:normal;
+        .btn-group label span {
+            height: 100px;
+            width: 100px;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            white-space: normal;
         }
-
     </style>
-    
+
     <script>
-        $(function(){
-            $("#save-button").click(function(){
-                var temp = $("#capture");
-                temp.find("input").remove();
-                temp.find("label.active").css("background-color", "#ff0000");
-                
-		html2canvas(document.querySelector("#capture")).then(canvas => {
-		    var imgData = canvas.toDataURL();
-		    $('#result')[0].src = imgData;
-		    $("#capture").remove();
-		});
-                
+        $(function () {
+            $("#save-button").click(function () {
+                $("#save-button").addClass("hidden");
+                html2canvas(document.body,
+                {
+                    onclone: function (document) {
+                        
+                    },
+
+                }).then(function (canvas) {
+                    
+                    var a = document.createElement('a');
+                      a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+                      a.download = 'result.jpg';
+                    a.click();
+
+                    $("#save-button").removeClass("hidden");
+                });
             });
         });
     </script>
 </head>
 <body>
-    <div><img id="result"></img></div>
+    <div><img id="result" /></div>
     <div id="capture">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-warning">
-                <div class="panel-heading"><h4>A型</h4></div>
-                <div class="panel-body">
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>変なところが几帳面</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>よく考えてから行動する</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>素直じゃない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>その人のために無理をする</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>結構めんどくさがり</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>謝ることが苦手</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>平和主義者</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>説明が下手</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>変なところが気になる</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>涙もろい</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>基本的にネガティブ</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>人に合わせるのが得意</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>責任感が強い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>頑張るのが好き</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>断るのが苦手</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>m負けず嫌い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>イライラすると黙る</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>好きなものには一途</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>勘がいい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>優柔不断</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>悪口が苦手</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>スルーは得意</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>独占欲が強い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>初対面の人に気を使う</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>中途半端にできない</span>
-                        </label>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading"><h4>A型</h4></div>
+                    <div class="panel-body">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>変なところが几帳面</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>よく考えてから行動する</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>素直じゃない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>その人のために無理をする</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>結構めんどくさがり</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>謝ることが苦手</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>平和主義者</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>説明が下手</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>変なところが気になる</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>涙もろい</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>基本的にネガティブ</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>人に合わせるのが得意</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>責任感が強い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>頑張るのが好き</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>断るのが苦手</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>負けず嫌い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>イライラすると黙る</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>好きなものには一途</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>勘がいい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>優柔不断</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>悪口が苦手</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>スルーは得意</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>独占欲が強い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>初対面の人に気を使う</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>中途半端にできない</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading"><h4>B型</h4></div>
+                    <div class="panel-body">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-warning">
-                <div class="panel-heading"><h4>B型</h4></div>
-                <div class="panel-body">
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>沈黙が苦手</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>暇になるのが嫌い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>すぐに忘れる</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>空気を読もうとしない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>やろうと思えばできるはず</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>割と常識人</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>心を開くまで長い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>基本めんどくさがり</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>近づかれると逃げたい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>一人の時間がないとダメ</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>話をコロコロ変える</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>やる気を出してすぐなくす</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>自由奔放</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>秘密は守る</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>キレると怖い</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>大人数は嫌い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>きらいな人は一生嫌い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>落ち着きがない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>声がでかい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>意外に寂しがりや</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>友人の誘いでも断る</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>細かないことは気にしない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>悪口が嫌い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>嘘は苦手</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>顔に出やすい</span>
-                        </label>
+                                <span>沈黙が苦手</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>暇になるのが嫌い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>すぐに忘れる</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>空気を読もうとしない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>やろうと思えばできるはず</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>割と常識人</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>心を開くまで長い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>基本めんどくさがり</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>近づかれると逃げたい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>一人の時間がないとダメ</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>話をコロコロ変える</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>やる気を出してすぐなくす</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>自由奔放</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>秘密は守る</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>キレると怖い</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>大人数は嫌い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>きらいな人は一生嫌い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>落ち着きがない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>声がでかい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>意外に寂しがりや</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>友人の誘いでも断る</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>細かないことは気にしない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>悪口が嫌い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>嘘は苦手</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>顔に出やすい</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading"><h4>O型</h4></div>
+                    <div class="panel-body">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-warning">
-                <div class="panel-heading"><h4>O型</h4></div>
-                <div class="panel-body">
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>大げさな傾向がある</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>欲張りすぎて長続きしない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>気をつかうのが大得意</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>スケジュールは書くが見ない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>運はいいほう</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>ギリギリまでやらない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>勢力争いは嫌い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>うっかりミスが多い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>キレるとめんどくさい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>変なことはよく覚えている</span>
-                        </label>
+                                <span>大げさな傾向がある</span>
+                            </label>
+                            <label class="btn btn-default">
 
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>ヤキモチ焼き</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>プライドが高い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>基本ポジティブ</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>悩み事をよく聞く</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>熱しやすく冷めやすい</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>一目惚れしやすい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>ちょっと盛っちゃう</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>褒められると伸びるタイプ</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>めんどくさがりや</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>先に謝ることが多い</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>基本的に話すのが好き</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>空気を読む</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>意外とオタク気質</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>口癖は「眠い」</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>考えるより実行</span>
-                        </label>
+                                <span>欲張りすぎて長続きしない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>気をつかうのが大得意</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>スケジュールは書くが見ない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>運はいいほう</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>ギリギリまでやらない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>勢力争いは嫌い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>うっかりミスが多い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>キレるとめんどくさい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>変なことはよく覚えている</span>
+                            </label>
+
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>ヤキモチ焼き</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>プライドが高い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>基本ポジティブ</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>悩み事をよく聞く</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>熱しやすく冷めやすい</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>一目惚れしやすい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>ちょっと盛っちゃう</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>褒められると伸びるタイプ</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>めんどくさがりや</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>先に謝ることが多い</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>基本的に話すのが好き</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>空気を読む</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>意外とオタク気質</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>口癖は「眠い」</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>考えるより実行</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading"><h4>AB型</h4></div>
+                    <div class="panel-body">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
 
+                                <span>思い立ったらすぐ行動</span>
+                            </label>
+                            <label class="btn btn-default">
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-warning">
-                <div class="panel-heading"><h4>AB型</h4></div>
-                <div class="panel-body">
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>思い立ったらすぐ行動</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>コツコツよりは一気にやる</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>変なところで頑固</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>基本強がり</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>大人数は嫌い</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>努力はあまり得意じゃない</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>断るのは苦手</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>白黒はっきりつけたい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>1日1回「面倒くさい」という</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>他人を分析するのは好き</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>後悔することが多い</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>思わぬところで几帳面</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>飽きっぽい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>自己表現が苦手</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>社交辞令は得意</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>ハマった時の熱意は異常</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>こだわりが強すぎる</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>何でも器用にこなす</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>人見知り</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>テキトーなふりをしている</span>
-                        </label>
-                    </div>
-                    <br />
-                    <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>いつも冷静でいられる</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>頼りにされると嬉しい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>誤解を招きやすい</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>収集することが好き</span>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="checkbox">
-                            <span>好き嫌いがはっきり</span>
-                        </label>
+                                <span>コツコツよりは一気にやる</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>変なところで頑固</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>基本強がり</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>大人数は嫌い</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>努力はあまり得意じゃない</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>断るのは苦手</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>白黒はっきりつけたい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>1日1回「面倒くさい」という</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>他人を分析するのは好き</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>後悔することが多い</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>思わぬところで几帳面</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>飽きっぽい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>自己表現が苦手</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>社交辞令は得意</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>ハマった時の熱意は異常</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>こだわりが強すぎる</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>何でも器用にこなす</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>人見知り</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>テキトーなふりをしている</span>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default">
+
+                                <span>いつも冷静でいられる</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>頼りにされると嬉しい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>誤解を招きやすい</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>収集することが好き</span>
+                            </label>
+                            <label class="btn btn-default">
+
+                                <span>好き嫌いがはっきり</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <div>
-        <button id="save-button" class="btn btn-primary form-control" style="height:40px;">画像化</button>
+        <button id="save-button" class="btn btn-primary form-control" style="height:80px;">ダウンロード</button>
     </div>
 </body>
 </html>
