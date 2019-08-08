@@ -31,6 +31,7 @@
         $(function () {
             $("#save-button").click(function () {
                 $("#save-button").addClass("hidden");
+
                 html2canvas(document.body,
                 {
                     onclone: function (document) {
@@ -39,12 +40,12 @@
 
                 }).then(function (canvas) {
                     
-                    var a = document.createElement('a');
-                      a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-                      a.download = 'result.jpg';
-                    a.click();
+                    var url = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+                    var img = $("<img />").attr("src", url);
 
-                    $("#save-button").removeClass("hidden");
+                    $("body").children().remove();
+                    $("body").append(img);
+                    
                 });
             });
         });
@@ -548,7 +549,7 @@
         </div>
     </div>
     <div>
-        <button id="save-button" class="btn btn-primary form-control" style="height:80px;">ダウンロード</button>
+        <button id="save-button" class="btn btn-primary form-control" style="height:80px;">画像化</button>
     </div>
 </body>
 </html>
